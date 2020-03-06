@@ -34,6 +34,7 @@ namespace BasicAuthRestService.Handlers
                 string[] credentials = Encoding.UTF8.GetString(bytes).Split(":");
                 string val1 = credentials[0];
                 string val2 = credentials[1];
+                string val3 = credentials[2];
 
                 if ( val1 == null && val2 == null)
                 {
@@ -41,6 +42,7 @@ namespace BasicAuthRestService.Handlers
                 }
                 else
                 {
+                    // Claims 에 email, user_name 등의 정보를 채워서 responseMessage로 사용할 수 있음.
                     var claims = new[] { new Claim(ClaimTypes.Name, "AtoManse") };
                     var identity = new ClaimsIdentity(claims, Scheme.Name);
                     var principal = new ClaimsPrincipal(identity);
